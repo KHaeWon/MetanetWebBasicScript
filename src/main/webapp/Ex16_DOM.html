@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<ul id="mylist"><li>coffee</li><li>tea</li><li>milk</li></ul>
+	<button onclick="myFunc1()">클릭1</button>
+	<button onclick="myFunc2()">클릭2</button>
+</body>
+<script type="text/javascript">
+
+	function myFunc1() {
+		
+		let list = document.getElementById("mylist");
+		console.log(list);
+		console.log(list.cildNodes);
+		list.removeChild(list.childNodes[0]);
+		//노드들 중에서 0번쨰 요소 >> ul태그의 자식요소인 li태그 중 0번째 요소를 지워버리겠다
+		//select가 가지고 있는 option들도 내부적으로는 배열이겠다
+		
+	}	
+	
+	function myFunc2() {
+		
+		let textnode = document.createTextNode("water");
+		//coffee를 water로 바꾸고 싶다 >> ul태그인 mylist부터 갖고 와야 한다.
+		let item = document.getElementById("mylist").childNodes[0];
+		console.log(item); //<li>coffee</li>
+		item.replaceChild(textnode,item.childNodes[0]); //coffee -> water
+		
+	}	
+</script>
+</html>

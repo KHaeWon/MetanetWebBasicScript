@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+	/* 
+	문서가 실행되면 웹 브라우저는 메모리에 body 안에 있는 모든 요소를 로딩함
+	그 메모리를 우리는 DOM이라고 부른다
+	DOM은 계층 트리로 구성되어 있다
+	메모리에 올라간 DOM을 가지고 놀자~
+	
+	DOM
+	HTML
+	...
+	head - body
+	
+	*/
+	function print() {
+		let ele = document.getElementById("demo");	//DOM script -- 최종 목적지
+		console.log(ele);
+		ele.innerHTML = "아 배고프다.............";
+	}
+	</script>
+</head>
+<body>
+	<button onclick="print()">클릭하세여</button>
+	<p id="demo">demo라는 id는 p태그의 식별자</p>
+</body>
+</html>

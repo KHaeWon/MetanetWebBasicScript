@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	/* 
+	
+	Finding HTML elements by id
+	Finding HTML elements by tag name
+	Finding HTML elements by class name
+	Finding HTML elements by CSS selectors
+	Finding HTML elements by HTML object collections
+	
+	document.getElementById(id)	Find an element by element id
+	document.getElementsByTagName(name)	Find elements by tag name
+	document.getElementsByClassName(name)	Find elements by class nameAA
+	
+	onload 이벤트가 발생하는 시점 >> body 태그 안에 있는 모든 요소가 브라우저 메모리에 loading 후에
+		>> DOM 생성
+	
+	function call(){}이 정의되어 있을 때
+	1. <body onload="call()"> : body 안에 있는 모든 요소들이 모드 로드된 후에 발생
+	2. window.onload = call();
+	2.1 익명함수를 통해서
+		window.onload = function(){}	>>	이벤트에 동작되는 함수를 핸들러 함수라고 한다.
+	
+	
+	
+	*/
+	//2.1방법 >> 익명함수, body 안에 있는 모든 요소가 로딩된 후에 발생하겠지용
+	window.onload = function(){
+			let out="";
+			out += "<ul>";
+				out += "<li>script</li>";
+				out += "<li>ajax</li>"
+			out += "<ul>";
+			
+			document.body.innerHTML = out;
+			
+			//DOM >> 동적 >> 기존에 없던 것들을 추가, 있던 것들을 삭제, 있는 것을 변경
+			const header = document.createElement("h1");
+			//<h1><h1>
+			const textnode = document.createTextNode("hello");
+			
+			header.appendChild(textnode);//appendChild >> 자식요소로 잡겠다
+			//<h1>hello<h1> 이렇게 된다 >> text도 자식요소
+			
+			document.body.appendChild(header); //body의 자식요소로 내가 만든 header 추가
+			
+			//img 태그를 동적으로 생성하고 src 속성도 동적으로 추가하고 src 속성에 w3schools.jpgㄴ 넣고
+			//body 자식으로 append
+			//<img ~>동적으로
+			
+			let img = document.createElement("img");
+			img.setAttribute("src","images/me.jpg");
+			img.setAttribute("width","150");
+			img.setAttribute("height","150");
+			document.body.append(img); 
+		}
+	
+
+	
+	</script>
+</head>
+<body>
+	Hello, World	<!-- out에 들어간 문자열들로 overwrite -->
+	
+</body>
+</html>

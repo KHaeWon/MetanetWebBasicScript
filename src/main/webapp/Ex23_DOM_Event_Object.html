@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+
+		window.onload = function () {
+			let btn = document.getElementById('mybtn1'); 
+			
+			btn.onclick = function(e){	//e라는 파라미터 >> event 객체의 주소가 반환됨
+				console.log(e.type); 	//click 어떤 event인지 판단 >> 이벤트의 종류 판단
+				console.log(e.target);	//<span>눌러방</span>
+				console.log(e.currentTarget);	//실제 이벤트를 갖고 있는 전체 요소 : <button id="mybtn1"><span>눌러방</span></button>
+				console.log(e.x); //32
+				console.log(e.y); //27
+				
+				//target은 이벤트가 발생한 바로 그 요소를 직접 가리키고 >> <span>눌러방</span>
+				//currentTarget은 이벤트 리스너를 가진 요소, 실제 이벤트를 갖고 있는 요소 >> <button id="mybtn1"><span>눌러방</span></button>
+			} 
+			
+			let btn2 = document.getElementById('mybtn2');
+			let handler = function (event) { //event 발생 시 생성된 Event 객체의 주소를 받아서
+				switch (event.type) {
+				case "click":
+					alert("click");
+					break;
+				case "mouseover":
+					event.target.style.backgroundColor="red";
+					break;
+				case "mouseout":
+					event.target.style.backgroundColor="";
+					break;
+				}
+			}
+			
+			btn2.onclick = handler;
+			btn2.onmouseover = handler;
+			btn2.onmouseout = handler;
+			
+			//btn2.onclick = function(){}
+			//btn2.onmouseover = function(){}
+			
+		}
+	</script>
+
+</head>
+<body>
+	<button id="mybtn1"><span>눌러방</span></button>
+	<br>
+	<button id="mybtn2"><span>눌러봐유</span></button>
+</body>
+</html>

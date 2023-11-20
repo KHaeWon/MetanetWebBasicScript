@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		let str = "10+20+30";
+		document.write(str+"<br>");
+		
+		// 1. eval()
+		// 문자열 수식을 계산식으로 바꿈 >> "10+20+30" >> eval() >> 10+20+30 >> 계산
+		// "10A+20+30" >> error
+		// 문자형 숫자 >> 숫자
+		document.write("eval() >> "+eval(str)+"<br>");
+ 		
+		let i = "100";
+ 		let j = "200"
+		
+		document.write("결합 : " + (i+j)); //산술, 결합 .. 오라클은 (+ >> 산술, || >> 연결)
+		document.write(Number(i) + Number(j));
+		document.write("<br>결과 = "+Number(i) + Number(j)); //100200 >> 안돼
+		document.write("<br>결과 = "+(Number(i) + Number(j))); //300
+
+		//Number() , parseInt() , parseFloat()
+		/*
+		Event	Description
+		onchange	An HTML element has been changed
+		onclick	The user clicks an HTML element
+		onmouseover	The user moves the mouse over an HTML element
+		onmouseout	The user moves the mouse away from an HTML element
+		onkeydown	The user pushes a keyboard key
+		
+		*/
+		
+		//onload >> 페이지가 로딩된 후 발생되는 이벤트
+		function bodyLoad() {
+			//s나는 body 안에 있는 모든 요소를 가지고 놀 수 있음을 보장
+			console.log("load...");
+			let data = document.myform.money.value;// >>  <input type="text" value="1000" name="money"><br>
+			console.log(isNaN(data)); // is not a number >> 이거 숫자 아니지 않음? >> false면 숫자, true면 숫자 아님
+		}
+		
+		function focusFunc() {
+			document.getElementById("myinput").style.background = "gold";
+		}
+		function blurFunc() {
+			document.getElementById("myinput").style.background = "blue";
+		}
+		function selectTag() {
+			const value = document.myform.sel.value;
+			console.log(value);
+		}
+		function changeColor(obj) {
+			console.log(obj);
+			//자바스크립트에서의 this는 요소 자신으로 보자.
+			//obj ==  <input type="text" onmouseover="changeColor(this)" onfocus=""><br>
+			obj.style.backgroundColor="gold";
+		}
+		function changeColor2(obj) {
+			obj.style.backgroundColor="pink";
+			//obj.style.backgroundColor="white";
+		}
+		</script>
+</head>
+<body onload="bodyLoad()">
+	<form action="#" name="myform">
+		<input type="text" id="myinput" name="myinput" onfocus="focusFunc()" onblur="blurFunc()"><!--onblur : 커서가 태그를 떠날 때  -->
+		<!-- 
+		[input태그] name >> 서버에서 데이터를 받을 때 >> 프론트 작업만 한다면 name 속성을 사용할 필요가 없다.
+					 id >> 자바스크립트, css가 사용 >> 주로 프론트 작업에서 사용 
+		-->
+		<br>
+		<select name="sel" onchange="selectTag()">
+			<option value="A">AA</option>
+			<option value="B">BB</option>
+			<option value="C">CC</option>
+			<option value="D">DD</option>
+		 </select>
+		 <br>
+		 <input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)"><br><!-- this>>이벤트를 일으키는 주체, input태그 -->
+		 <input type="text"><br>
+		 <input type="text" value="1000" name="money"><br>
+	</form>
+	
+</body>
+</html>

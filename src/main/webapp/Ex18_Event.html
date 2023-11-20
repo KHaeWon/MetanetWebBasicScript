@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			let btnobj = document.getElementById('btngetdata');
+			//<input type="button" id="btngetdata" value="getinfo">에 직접 onclick을 제시하는 코드는 BAD
+			btnobj.onclick = function(){ //문법 ) 객체.이벤트명 = 익명함수 -> 동적으로 이벤트 걸기
+				let txtmsg = document.getElementById('txtmessage');
+				let str = "";
+				str += "ID : "+txtmsg.getAttribute('id');
+				str += "value : "+txtmsg.getAttribute('value');
+				console.log(str);
+			}
+			
+			/*btncreate 버튼에 click 이벤트를 걸고
+			<input type="text" id="txtbox" value="홍길동">인 태그를 동적으로 생성하고
+			body 요소에 자식요소로 주가(appendChild)
+			createElement
+			setAttribute */
+			
+			document.getElementById('btncreate').onclick=function(){
+				let txt = document.createElement('input');
+				txt.setAttribute("type","text");
+				txt.setAttribute("value","홍길동");
+				txt.setAttribute("id","txtbox");
+				document.body.appendChild(txt);
+			}
+			
+		}
+	
+	</script>
+</head>
+<body>
+	<input type="text" id="txtmessage" value="hello">
+	<input type="button" id="btngetdata" value="getinfo">
+	<hr>
+	<input type="button" id="btncreate" value="동적생성">
+</body>
+</html>

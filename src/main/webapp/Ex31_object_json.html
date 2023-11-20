@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	
+		let myobj = {name:"john",age:30,city:"seoul"};
+		
+		//json 형태의 문자열 -> 객체
+		//json 객체 -> 문자열
+		const str = JSON.stringify(myobj);
+		console.log(str);
+		console.log(typeof(str));
+		
+		//문자열 데이터 -> 객체 데이터로(조건 : JSON 문자열에서 반드시 속성값은 "" 또는 '' 안에 정의해야 한다.')
+		/* let myobj2 = '{name:"john",age:30,city:"seoul"}';
+		console.log(JSON.parse(myobj2)); */
+		//Uncaught SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+	   /*  at JSON.parse (<anonymous>)
+	    at Ex31_object_json.html:18:20 */
+	    
+	    let myString = '{"name":"john","age":30,"city":"seoul"}';
+	    console.log(JSON.parse(myString));
+	    
+	    strObj = JSON.parse(myString);
+	    
+	    //암기!!!!!!중요
+	    console.log(strObj.name); //객체.속성명
+	    console.log(strObj["name"]); //객체["속성명"]
+	    
+	    let mycars;
+	    mycars = {"name":"king",
+	    		  "age":20,
+	    		  "cars":[
+			    			{"name":"Ford","model":["Mustang","Focus"]},
+			    			{"name":"BMW","model":["520","x5","x7"]},
+			    			{"name":"Fiat","model":["500","panda"]}
+	    			     ]
+	   			 };
+		
+	    document.write(typeof(JSON.stringify(mycars)));//string
+	    document.write(typeof(mycars)); //object
+	    
+	   
+		         
+		/*
+		신입 개발자 
+		JSON 데이터에서 원하는 값을 추출해서 화면에 이쁘게 출력
+		//차량이름 >> 모델명 출력
+		//Ford - Mustang Focus 출력
+		//BMW  - 520 x5 x7 ...
+		*/   
+		 console.log(mycars);
+		 console.log(mycars.cars);
+		 for(let index in mycars.cars){
+				document.write("차량이름 : " + mycars.cars[index].name);
+				//console.log(mycars.cars[index].model);
+					for(let i in mycars.cars[index].model){
+						document.write(" 차량모델 : " + mycars.cars[index].model[i]);
+					}
+				document.write("<hr>");
+		}     
+	    
+	    
+	    
+	    //document.write(JSON.stringify(mycars).cars);
+	    
+	</script>
+</head>
+<body>
+
+</body>
+</html>
