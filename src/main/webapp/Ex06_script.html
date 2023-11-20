@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/* 자바스크립트는 웹 브라우저가 갖고 있는 내장 객체, 내장 함수를 사용할 수 있음 */
+		function callConfirm() {
+			if(window.confirm("삭제할까요")){//true나 false 리턴
+				alert("네");
+			}else{
+				alert("아니오")
+			}
+		}
+		
+		function showPopup() {
+			window.open("Ex06_popup.html","zipcode","width=200;height=200");
+			//open함수 >> 새로운 창 띄우기 >> 전통적인 방법 open("띄워지는 창의 주소","형식")
+		}
+		
+		function myFunc() {
+			let popupwindow = window.open("Ex06_popup.html","zipcode","width=200;height=200"); //띄워진 창의 주소값을 얻을 수 있다.
+			//띄운쪽이 부모, 띄워진 애가 자식
+			//부모가 자식창의 제어 가능
+			//popupwindow >> 새 창 >> window 객체이므로 document 속성 접근 가능
+			popupwindow.document.write("<p>this is zipcode window</p>");//우편번호 검색합니다.라는 내용이 this is zipcode window로 바뀌었음을 볼 수 있다.
+		}
+		
+		//java >> public void goUrlTime(String url){}
+		//파라미터 타입 사용x, 리턴타입도 없음
+		function goUrlTime(url) {
+			window.setTimeout("location.href='"+url+"'",3000); //일정 시간이 지나면 다른 곳으로 이동시킴
+			//3초 후 현재 위치를 url 위치로 바꾸기
+		}
+		
+		//java : public int myCallFunc(int i, int j, int k){return i+j+k;}
+		function myCallFunc(i, j, k) {
+			return i+j+k;
+		}
+		let result = myCallFunc(10,20,30);
+		console.log(result);
+		
+		//javascript 함수(익명함수)
+		//이름이 없다(한번만 쓰겠다, 재사용하지 않겠다.)
+		//function 이름 { }
+		
+		changeColor = function () {
+			//changeColor >> 함수 "객체" 리턴, 함수 이름이 없음. 
+			//			>> 함수를 호출할 수 있다.
+			window.document.bgColor = "silver";
+			window.document.fgColor = "red";
+		}
+		
+	</script>
+</head>
+<body>
+	<h3>내장함수 사용하기</h3>
+	<button onclick="callConfirm()">클릭사건 발생</button><br>
+	<button onclick="showPopup()">팝업창</button>
+	<button onclick="myFunc()">window 창 제어</button>
+	<button onclick="goUrlTime('http://www.daum.net')">3초 후 이동</button>
+	<button onclick="changeColor()">호출(익명함수)</button>
+</body>
+</html>

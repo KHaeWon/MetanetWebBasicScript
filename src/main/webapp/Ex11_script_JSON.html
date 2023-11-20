@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	
+		/* 
+		이기종 간 데이터 교환 (web service)
+		xml >> text 기반의 형식화된 언어
+		단점 >> 문법이 어렵고 방대한 양으올 무거움
+		
+		simple한 데이터 표현(text, 정의)
+		javascript의 json (객체를 사용하면)
+		공공 api 받아서 처리하기
+		
+		*/
+		
+		//배열 만들기
+		let arr = []; //이게 베스트.. 이렇게 하고 push
+		//객체 만들기
+		let Member={}; 
+		
+		Member.name = "hong"; // {name:"hong"}으로 잡힌다
+		
+		console.log(Member);
+		console.log(Member.name);
+		
+		Member.age = 100; //{age:100}추가 >> {name:"hong",age:100}
+		
+		//함수 추가
+		Member.print=function(){
+			document.write("<br>"+this.name+" / "+this.age+"<br>");
+		}
+		//{name:"hong",age:100,print:function(){}}
+		Member.print();
+		console.log(Member);
+		
+		//JSON 객체 만들기
+		let Grade = {
+				"list":{"hong":10,"kim":20,"park":30}, //list라는 property가 가지는 value가 객체
+				"show":function(){
+					for(let key in this.list){
+						document.write(key + ":" + this.list[key] + "<br>");
+					}
+				}
+		
+		}
+		
+		Grade.show();
+		console.log(Grade);
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

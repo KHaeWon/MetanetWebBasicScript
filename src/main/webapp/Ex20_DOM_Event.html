@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+</head>
+<body>
+	<button id="myBtn">go</button>
+	<p id="demo"></p>
+</body>
+<script type="text/javascript">
+	/* 
+		https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+		syntax : element.addEventListener(event, function, useCapture);
+		1. 하나의 요소는 여러 개의 event를 가질 수 있다.
+		2. addEventListner 장점 >> 이벤트가 필요하면 추가, 필요 없으면 제거 -> removeEventListner
+		
+	*/		
+	document.getElementById("myBtn").addEventListner("click",display);//addEventListner("on뺀이름",함수명);
+	function display() {
+		document.getElementById("demo").innerHTML = new Data();
+	}
+</script>
+</html>

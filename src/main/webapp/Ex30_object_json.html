@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let Students = [];
+		Students.push({"이름":"홍길동","국어":80,"영어":60}); //객체를 push -> 배열의 0번째 방에 객체가 들어간 것
+		Students.push({"이름":"아무개","국어":70,"영어":60});
+		Students.push({"이름":"이순신","국어":100,"영어":10});
+		//현재 상태 -> [{0번째방 객체},{1번째방 객체},{2번째방 객체}]
+		
+		for(let index in Students){
+			Students[index].getSum = function() {
+				return this.국어 + this.영어;
+			}
+			Students[index].getAvg = function() {
+				return this.getSum() / 2;
+			}
+		}
+		
+		console.log(Students);
+		
+		for(let index in Students){
+			console.log(Students[index].이름);
+			console.log(Students[index].getSum());
+			console.log(Students[index].getAvg());
+		}
+	</script>
+</body>
+</html>

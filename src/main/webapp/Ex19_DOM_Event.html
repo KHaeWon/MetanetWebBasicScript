@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		
+		function displayData() {
+			document.getElementById('demo').innerHTML = new Date();
+		}
+		
+		//1. onload 밑에 넣어두거니 2. body 뒷쪽에 걸면 작동되겠지요
+		//document.getElementById('mybtn1').onclick = displayData();
+		
+		//내가 원하는 건 버튼 클릭 시 출력되도록 하는 것인데, 그냥 나와버렸다.. 무엇이 문제일까?
+		window.onload = function () {
+			//document.getElementById('mybtn').onclick = displayData();	
+			//displayData()의 문제 -> onload 할 때 바로 함수가 호출되어 버리기 때문에
+									//onload 시점에 displayData()를 바로 호출해버림
+			
+			//동적으로 걸 때는 함수에 ()를 주면 안 된다. 이름만 주어야 한다.
+			document.getElementById('mybtn').onclick = displayData;
+			
+		}
+		
+	</script>
+</head>
+<body>
+	<button id="mybtn">눌러방</button>
+	<br>
+	<p id="demo"></p>
+</body>
+</html>

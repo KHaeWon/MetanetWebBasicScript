@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/* 
+	javascript : 자원(객체충돌) >> 웹 브라우저 내장하고 객체, 함수 사용 가능
+	 */
+	window.document.write("ㅎㅇㅎㅇ<br>");/* window 객체 안 document 객체 안 write 함수 사용*/
+	document.write("window 객체 생략<br>");
+
+	//디버깅, 오류 결과, ..
+	console.log("디버깅, 결과 미리보기, 오류 메시지 확인");
+	console.log(10 + 10);
+
+	//var, let, const
+	//var는 사용 x ! ! ! >> 기존 소스 유지보수 차원에서 보는 것임
+
+	var num; // 타입이 정해져 있지 않음(정수, 실수, 날짜, 문자열 ...)
+	console.log(num); // undefined 뜬다 >> 오류 메시지가 아님 >> 아직 정의되지 않았다고 알려줌
+	num = 10; // 값을 가지는 순간 타입이 확정됨
+	console.log(num);
+	console.log(typeof(num));//중요! 무슨 타입인지 알려줌 -> number타입
+	
+	//let element = window.document.forms[0].elements[0]; //배열! 0번째 폼 myform, 0번째 요소인 input태그의 value="hong"
+	//console.log(element);
+	
+	//Uncaught TypeError: Cannot read properties of undefined (reading 'elements')
+	//오류>>왜? 
+	//****자바스크립트는 line단위로 읽고 위에서 아래로 읽기 때문에 메모리에 없음. 없는 객체로 취급함.
+	//만약 이렇게 라인 단위로 쓰지 않고 함수로 만들어서 호출해서 사용하게 한다면 문제 없겠지?
+	function data(){
+		let element = window.document.forms[0].elements[0]; //배열! 0번째 폼 myform, 0번째 요소인 input태그의 value="hong"
+		console.log(element);
+		//element와 input태그는 같은 것으로 본다. input 객체 가지고 있으니까
+	}
+</script>
+</head>
+<body>
+	<form action="#" method="get" name="myform">
+		<input type="text" name="userid" value="hong"><br>
+		<input type="password" name="userpwd" value="1004"><br>
+		<input type="submit" value="전송">
+	</form>
+	<input type="button" value="함수호출" onclick="data()"> <!-- 정상적인 실행 -->
+</body>
+</html>
+<script>
+let element = window.document.forms[0].elements[0]; //배열! 0번째 폼 myform, 0번째 요소인 input태그의 value="hong"
+console.log(element);//<input type="text" name="userid" value="hong">
+console.log(element.value);//hong
+console.log(element.value.length);//4	value가 String 타입이고 String은 어차피 char 배열이기 때문에 가능
+</script>
